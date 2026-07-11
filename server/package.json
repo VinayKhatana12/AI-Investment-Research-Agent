@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev":        "tsx watch src/index.ts",
-    "build":      "cross-env NODE_OPTIONS=--max-old-space-size=4096 tsc",
-    "typecheck":  "cross-env NODE_OPTIONS=--max-old-space-size=4096 tsc --noEmit",
+    "build":      "tsc",
+    "typecheck":  "tsc --noEmit",
     "test:tools": "tsx src/scripts/test-tools.ts",
     "test:agent": "tsx src/scripts/test-agent.ts",
     "start":      "node dist/index.js"
@@ -27,7 +27,6 @@
     "@types/cors":    "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node":    "^22.0.0",
-    "cross-env":      "^7.0.3",
     "tsx":            "^4.19.0",
     "typescript":     "^5.5.4"
   }
