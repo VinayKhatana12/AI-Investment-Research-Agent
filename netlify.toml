@@ -1,0 +1,14 @@
+# netlify.toml — alternative to Vercel for the client static build
+# Set environment variables in the Netlify dashboard:
+#   VITE_API_URL = https://ai-investment-agent.onrender.com
+
+[build]
+  base    = "client"
+  command = "npm run build"
+  publish = "dist"
+
+# SPA: redirect all routes to index.html
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

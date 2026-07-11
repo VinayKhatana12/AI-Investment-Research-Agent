@@ -53,8 +53,12 @@ function useLoadingStep(active: boolean) {
 }
 
 // ── fetch helper ───────────────────────────────────────────────────────────────
+// In dev the Vite proxy rewrites /api → http://localhost:3001, so VITE_API_URL=""
+// works fine. In production set VITE_API_URL=https://your-backend.onrender.com
+const API_BASE = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
+
 async function analyzeCompany(companyName: string): Promise<ApiSuccess> {
-  const res = await fetch("/api/agent", {
+  const res = await fetch(`${API_BASE}/api/agent`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ companyName }),

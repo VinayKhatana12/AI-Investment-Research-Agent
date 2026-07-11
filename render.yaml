@@ -1,0 +1,42 @@
+# render.yaml — Infrastructure-as-code for Render
+# Docs: https://render.com/docs/render-yaml-spec
+#
+# Deploy:
+#   1. Push repo to GitHub
+#   2. In Render dashboard → New → Blueprint → point to repo root
+#   3. Render reads this file and creates the service automatically
+#   4. Set secret env vars (GOOGLE_API_KEY, TAVILY_API_KEY, CLIENT_ORIGIN)
+#      in the Render dashboard under Environment → Secret Files or Env Vars
+
+services:
+  - type: web
+    name: ai-investment-agent-server
+    runtime: node
+    rootDir: server
+
+    # Build: compile TypeScript to dist/
+    buildCommand: npm install && npm run build
+
+    # Start: run compiled JS — no tsx/ts-node in production
+    startCommand: npm run start
+
+    # Render free tier spins down after inactivity; use "standard" for always-on
+    plan: free
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      # Set these in the Render dashboard (mark as secret):
+      - key: GOOGLE_API_KEY
+        sync: false          # "sync: false" = must be set manually in dashboard
+
+      - key: TAVILY_API_KEY
+        sync: false
+
+      # Set to your Vercel client URL after deploying the frontend:
+      - key: CLIENT_ORIGIN
+        sync: false
+
+      - key: PORT
+        value: 10000         # Render assigns PORT automatically; this is a fallback
