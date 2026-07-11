@@ -1,0 +1,10 @@
+/**
+ * Placeholder — LangGraph agent will live here.
+ *
+ * Example graph modules to add later:
+ *   - graph.ts       : StateGraph definition & compiled graph export
+ *   - state.ts       : TypedDict / Zod schema for graph state
+ *   - nodes.ts       : Individual node functions (llmNode, toolNode, …)
+ */
+
+export {};

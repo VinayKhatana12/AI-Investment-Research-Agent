@@ -1,0 +1,9 @@
+/**
+ * Placeholder — external tool functions (Tavily search, etc.) will live here.
+ *
+ * Example modules to add later:
+ *   - tavilySearch.ts  : Wraps TavilySearchResults as a LangChain tool
+ *   - calculator.ts    : Simple arithmetic tool example
+ */
+
+export {};
